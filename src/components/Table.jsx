@@ -36,6 +36,7 @@ const StyledTh = styled.th`
 
 
 const StyledTd = styled.td`
+  min-width: 25rem;
   padding: 1.5rem;
   border-top: 1px solid #C0C0C0;
   text-align: center;
