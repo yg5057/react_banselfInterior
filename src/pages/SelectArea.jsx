@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import CardLarge from '../components/cards/CardLage';
 import CardMidium from '../components/cards/CardMidium';
@@ -46,6 +46,9 @@ const CardLeft = styled.div`
 // SelectArea Page
 const SelectArea = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const constructionType = location.state?.constructionType;
+  
   const goToHome = () => { navigate('/'); };
 
   return (
@@ -55,7 +58,7 @@ const SelectArea = () => {
         <CardLeft>
           <div>
             <img src={mainTitle_icon} style={{ marginBottom: '.8rem' }} />
-            <SubTitle color='#0047FF'>전체 공사</SubTitle>
+            <SubTitle color='#0047FF'>{constructionType}</SubTitle>
           </div>
           <ImageCardLarge src={selectarea_img} />
         </CardLeft>

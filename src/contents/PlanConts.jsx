@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 import CustomDate from '../components/Input/CustomDate';
 import Calendar from '../components/Calendar';
@@ -46,21 +47,91 @@ const DividingLine = styled.div`
 
 // PlanConts
 const PlanConts = () => {
+  const location = useLocation();
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState(''); // 시작 날짜 상태 추가
   const [modifiedData, setModifiedData] = useState([]); // 변경된 데이터 상태 추가
+  const [constructionType, setConstructionType] = useState('');
+  const [area, setArea] = useState('');
 
   useEffect(() => {
-    fetch('./data/02.xlsx')
-      .then(response => response.arrayBuffer())
-      .then(buffer => {
-        const workbook = XLSX.read(buffer, { type: 'buffer' });
-        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet);
-        setData(jsonData);
-      });
-  }, []);
+    const queryParams = new URLSearchParams(location.search);
+    const type = queryParams.get('type');
+    const area = queryParams.get('area');
+    setConstructionType(type);
+    setArea(area);
 
+    const fileMapping = {
+      '전체 공사': {
+        '15-19': '01.xlsx',
+        '20-24': '02.xlsx',
+        '25-29': '03.xlsx',
+        '30-34': '04.xlsx',
+        '35-39': '05.xlsx',
+        '40-49': '06.xlsx',
+        '50': '07.xlsx',
+      },
+      '샷시 + 내부공사': {
+        '15-19': '08.xlsx',
+        '20-24': '09.xlsx',
+        '25-29': '10.xlsx',
+        '30-34': '11.xlsx',
+        '35-39': '12.xlsx',
+        '40-49': '13.xlsx',
+        '50': '14.xlsx',
+      },
+      '내부 공사': {
+        '15-19': '15.xlsx',
+        '20-24': '16.xlsx',
+        '25-29': '17.xlsx',
+        '30-34': '18.xlsx',
+        '35-39': '19.xlsx',
+        '40-49': '20.xlsx',
+        '50': '21.xlsx',
+      },
+      '욕실+주방+마감재 공사': {
+        '15-19': '22.xlsx',
+        '20-24': '23.xlsx',
+        '25-29': '24.xlsx',
+        '30-34': '25.xlsx',
+        '35-39': '26.xlsx',
+        '40-49': '27.xlsx',
+        '50': '28.xlsx',
+      },
+      '마감재 공사': {
+        '15-19': '29.xlsx',
+        '20-24': '30.xlsx',
+        '25-29': '31.xlsx',
+        '30-34': '32.xlsx',
+        '35-39': '33.xlsx',
+        '40-49': '34.xlsx',
+        '50': '35.xlsx',
+      },
+      '도배 + 장판 공사': {
+        '15-19': '36.xlsx',
+        '20-24': '37.xlsx',
+        '25-29': '38.xlsx',
+        '30-34': '39.xlsx',
+        '35-39': '40.xlsx',
+        '40-49': '41.xlsx',
+        '50': '42.xlsx',
+      },
+    };
+
+    const fileName = fileMapping[type]?.[area];
+
+    if (fileName) {
+      fetch(`./data/${fileName}`)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+          const workbook = XLSX.read(buffer, { type: 'buffer' });
+          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = XLSX.utils.sheet_to_json(worksheet);
+          setData(jsonData);
+        });
+    }
+  }, [location.search]);
+  
   // 시작 날짜 변경 핸들러
   const handleStartDateChange = event => {
     setStartDate(event.target.value);
@@ -117,7 +188,7 @@ const PlanConts = () => {
       <PlanSectionWrapper>
         <PlanTableWrapper>
           <PlanTitleWrapper>
-            <HighlightTitle>전체공사</HighlightTitle>
+            <HighlightTitle>{constructionType}</HighlightTitle>
             <SubTitle>공사 계획표</SubTitle>
           </PlanTitleWrapper>
           <CustomDate startDate={startDate} handleStartDateChange={handleStartDateChange} />
@@ -127,7 +198,7 @@ const PlanConts = () => {
       <DividingLine />
       <PlanSectionWrapper>
         <PlanTitleWrapper>
-          <HighlightTitle>전체공사</HighlightTitle>
+          <HighlightTitle>{constructionType}</HighlightTitle>
           <SubTitle>공사 일정표</SubTitle>
         </PlanTitleWrapper>
         <Calendar events={events} />

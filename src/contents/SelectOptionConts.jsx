@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import CustomDropdown from '../components/Input/CustomDropdown';
 import BtnCalendar from '../components/buttons/BtnCalendar';
@@ -28,17 +28,24 @@ const InputWrapper = styled.section`
 const SelectOptionConts = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const navigate = useNavigate();
-    const goToCalendar = () => { navigate('/plan') };
+    const location = useLocation();
 
+    const goToCalendar = () => {
+        const queryParams = new URLSearchParams({
+          type: location.state.constructionType,
+          area: selectedOption,
+        }).toString();
+        navigate(`/plan?${queryParams}`);
+      };
 
     const options = [
-        { value: '1', label: '15 - 19평 아파트' },
-        { value: '2', label: '20 - 24평 아파트' },
-        { value: '3', label: '25 - 29평 아파트' },
-        { value: '4', label: '30 - 34평 아파트' },
-        { value: '5', label: '35 - 39평 아파트' },
-        { value: '6', label: '40 - 49평 아파트' },
-        { value: '7', label: '50평 이상 아파트' },
+        { value: '15-19', label: '15 - 19평 아파트' },
+        { value: '20-24', label: '20 - 24평 아파트' },
+        { value: '25-29', label: '25 - 29평 아파트' },
+        { value: '30-34', label: '30 - 34평 아파트' },
+        { value: '35-39', label: '35 - 39평 아파트' },
+        { value: '40-49', label: '40 - 49평 아파트' },
+        { value: '50', label: '50평 이상 아파트' },
     ];
 
     const handleSelectChange = (value) => {
