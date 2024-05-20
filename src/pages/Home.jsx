@@ -55,10 +55,11 @@ const CardBottomRightWrapper = styled.section`
 
 
 
+
 // Home page
 const Home = () => {
   const navigate = useNavigate();
-  
+
   const goToSelectArea = (constructionType) => {
     navigate('/select-area', { state: { constructionType } });
   };
@@ -72,29 +73,41 @@ const Home = () => {
             <h1>반 - 셀프<br />인테리어<br />공정 플래너</h1>
           </MainTitle>
         </CardTopLeftWrapper>
-        <NavCard onClick={() => goToSelectArea('전체 공사')} width="94.8rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly">
+        <NavCard onClick={() => goToSelectArea('전체 공사')} width="94.8rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly"
+                 hoverText={`이 부분은 전체 공사 카드에 대한 설명 부분입니다.
+                              추가내용 추가내용 추가내용 추가내용`}>
           <ImageCard src={card_img1} />
           <p>전체 공사</p>
         </NavCard>
       </CardTopWrapper>
       <CardBottomWrapper>
-        <NavCard onClick={() => goToSelectArea('샷시 + 내부 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly">
+        <NavCard onClick={() => goToSelectArea('샷시 + 내부 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly"
+                 hoverText={`이 부분은 샷시 + 내부 공사 카드에 대한 설명 부분입니다.
+                             추가내용 추가내용 추가내용 추가내용`}>
           <ImageCard src={card_img2} />
           <p>샷시 + 내부 공사</p>
         </NavCard>
-        <NavCard onClick={() => goToSelectArea('내부 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly">
+        <NavCard onClick={() => goToSelectArea('내부 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly"
+                 hoverText={`이 부분은 내부 공사 카드에 대한 설명 부분입니다.
+                             추가내용 추가내용 추가내용 추가내용`}>
           <ImageCard src={card_img3} />
           <p>내부 공사</p>
         </NavCard>
-        <NavCard onClick={() => goToSelectArea('욕실+주방+마감재 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly">
+        <NavCard onClick={() => goToSelectArea('욕실+주방+마감재 공사')} width="30rem" height="31rem" backgroundColor="#ffff" justifyContent="space-evenly"
+                 hoverText={`이 부분은 욕실+주방+마감재 공사 카드에 대한 설명 부분입니다.
+                              추가내용 추가내용 추가내용 추가내용`}>
           <ImageCard src={card_img4} />
           <p>욕실+주방+마감재 공사</p>
         </NavCard>
         <CardBottomRightWrapper>
-          <NavCard onClick={() => goToSelectArea('마감재 공사')} width="30rem" height="14.3rem" backgroundColor="#0047FF" justifyContent="flex-end" color="#ffff">
+          <NavCard onClick={() => goToSelectArea('마감재 공사')} width="30rem" height="14.3rem" backgroundColor="#0047FF" justifyContent="flex-end" color="#ffff"
+                   hoverText={`이 부분은 마감재 공사 카드에 대한 설명 부분입니다.
+                                추가내용 추가내용 추가내용 추가내용`}>
             <p>마감재 공사</p>
           </NavCard>
-          <NavCard onClick={() => goToSelectArea('도배 + 장판 공사')} width="30rem" height="14.3rem" backgroundColor="#0047FF" justifyContent="flex-end" color="#ffff">
+          <NavCard onClick={() => goToSelectArea('도배 + 장판 공사')} width="30rem" height="14.3rem" backgroundColor="#0047FF" justifyContent="flex-end" color="#ffff"
+                   hoverText={`이 부분은 도배 + 장판 공사 카드에 대한 설명 부분입니다.
+                                추가내용 추가내용 추가내용 추가내용`}>
             <p>도배 + 장판 공사</p>
           </NavCard>
         </CardBottomRightWrapper>

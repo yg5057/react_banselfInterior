@@ -25,15 +25,32 @@ const StyledCard = styled.div.attrs(props => ({
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease-in-out; // transform 속성에 대한 애니메이션 효과 추가
+  .hover-text { 
+    display: none; 
+    white-space: pre-line; 
+    font-family: Pretendard;
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: left;
+    overflow-y: auto;
+  }
+  
   &:hover {
     transform: scale(1.05); // 호버 시 크기가 약간 확대되는 애니메이션
+    img {
+      display: none; /* 이미지 숨김 */
+    }
+    .hover-text {
+      display: block; /* 호버 시 보이도록 함 */
+    }
   }
 `;
 
-const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent }) => {
+const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent, hoverText }) => {
     return (
       <StyledCard onClick={onClick} width={width} height={height} backgroundColor={backgroundColor} color={color} justifyContent={justifyContent}>
         {children}
+        <div className="hover-text">{hoverText}</div>
       </StyledCard>
     );
   };

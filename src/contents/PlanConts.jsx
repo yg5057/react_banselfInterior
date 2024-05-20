@@ -10,7 +10,6 @@ import SubTitle from '../components/titles/SubTitle';
 import HighlightTitle from '../components/titles/HighlightTitle';
 
 
-
 // styled components
 const PlanContsWrapper = styled.section`
   width: 100%;
