@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 
 const MainContent = styled.main`
+ width: 140rem;
+ margin: 0 auto;
  display: flex; 
  justify-content: center; 
  align-items: center; 

@@ -35,9 +35,9 @@ const SelectOptionConts = () => {
             alert('공사 면적을 선택해주세요.');
             return;
         }
-        
+
         const queryParams = new URLSearchParams({
-            type: location.state?.constructionType || '', // location.state가 null일 수 있으므로 안전하게 접근
+            type: location.state?.constructionType || '', 
             area: selectedOption,
         }).toString();
         navigate(`/plan?${queryParams}`);
