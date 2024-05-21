@@ -8,6 +8,7 @@ import Calendar from '../components/Calendar';
 import Table from '../components/Table';
 import SubTitle from '../components/titles/SubTitle';
 import HighlightTitle from '../components/titles/HighlightTitle';
+import NoticeText from '../components/titles/\bNoticeText';
 
 
 // styled components
@@ -61,7 +62,7 @@ const PlanConts = () => {
     setArea(area);
 
     const fileMapping = {
-      '전체 공사': {
+      '전체공사': {
         '15-19': '01.xlsx',
         '20-24': '02.xlsx',
         '25-29': '03.xlsx',
@@ -70,7 +71,7 @@ const PlanConts = () => {
         '40-49': '06.xlsx',
         '50': '07.xlsx',
       },
-      '샷시 + 내부 공사': {
+      '샷시/내부공사': {
         '15-19': '08.xlsx',
         '20-24': '09.xlsx',
         '25-29': '10.xlsx',
@@ -79,7 +80,7 @@ const PlanConts = () => {
         '40-49': '13.xlsx',
         '50': '14.xlsx',
       },
-      '내부 공사': {
+      '내부공사': {
         '15-19': '15.xlsx',
         '20-24': '16.xlsx',
         '25-29': '17.xlsx',
@@ -88,7 +89,7 @@ const PlanConts = () => {
         '40-49': '20.xlsx',
         '50': '21.xlsx',
       },
-      '욕실+주방+마감재 공사': {
+      '욕실/주방/마감재 공사': {
         '15-19': '22.xlsx',
         '20-24': '23.xlsx',
         '25-29': '24.xlsx',
@@ -106,7 +107,7 @@ const PlanConts = () => {
         '40-49': '34.xlsx',
         '50': '35.xlsx',
       },
-      '도배 + 장판 공사': {
+      '도배/장판 공사': {
         '15-19': '36.xlsx',
         '20-24': '37.xlsx',
         '25-29': '38.xlsx',
@@ -190,7 +191,10 @@ const PlanConts = () => {
             <HighlightTitle>{constructionType}</HighlightTitle>
             <SubTitle>공사 계획표</SubTitle>
           </PlanTitleWrapper>
-          <CustomDate startDate={startDate} handleStartDateChange={handleStartDateChange} />
+          <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+            <CustomDate startDate={startDate} handleStartDateChange={handleStartDateChange} />
+            <NoticeText color='#E24242'>* 공사 계획표의 내용은 드래그하여 복사할 수 있습니다, 엑셀에 붙여 넣어 사용해 보세요.</NoticeText>
+          </div>
           <Table data={modifiedData} />
         </PlanTableWrapper>
       </PlanSectionWrapper>

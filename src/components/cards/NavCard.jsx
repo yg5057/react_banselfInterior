@@ -14,7 +14,7 @@ const StyledCard = styled.div.attrs(props => ({
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 2rem 2rem 3rem 2rem;
+  padding: 2rem;
   background: #FFFFFF;
   border-radius: 20px;
   box-shadow: 4px 4px 24px 0px #00000040;
@@ -29,7 +29,30 @@ const StyledCard = styled.div.attrs(props => ({
     display: none; 
     white-space: pre-line; 
     font-family: Pretendard;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: 2.6rem;
+    font-weight: normal;
+    text-align: left;
+    overflow-y: auto;
+  }
+  .hover-text-small { 
+    display: none; 
+    white-space: pre-line; 
+    color: #ACABAB;
+    font-family: Pretendard;
+    font-size: 1.3rem;
+    line-height: 2.6rem;
+    font-weight: normal;
+    text-align: left;
+    overflow-y: auto;
+  }
+  .hover-text-xsmall { 
+    display: none; 
+    white-space: pre-line; 
+    color:#FFFFFF99;
+    font-family: Pretendard;
+    font-size: 1.3rem;
+    line-height: 2.6rem;
     font-weight: normal;
     text-align: left;
     overflow-y: auto;
@@ -40,17 +63,21 @@ const StyledCard = styled.div.attrs(props => ({
     img {
       display: none; /* 이미지 숨김 */
     }
-    .hover-text {
+    .hover-text, .hover-text-small, .hover-text-xsmall {
       display: block; /* 호버 시 보이도록 함 */
     }
   }
 `;
 
-const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent, hoverText }) => {
+const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent, hoverText, hoverTextSmall, hoverTextXSmall }) => {
     return (
       <StyledCard onClick={onClick} width={width} height={height} backgroundColor={backgroundColor} color={color} justifyContent={justifyContent}>
         {children}
-        <div className="hover-text">{hoverText}</div>
+        <div>
+          <div className="hover-text">{hoverText}</div>
+          <div className="hover-text-small">{hoverTextSmall}</div>
+          <div className="hover-text-xsmall">{hoverTextXSmall}</div>
+        </div>
       </StyledCard>
     );
   };
