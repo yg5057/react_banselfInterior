@@ -78,7 +78,7 @@ const Home = () => {
       <CardTopWrapper>
         <CardTopLeftWrapper>
           <MainTitle>
-            <h1>30초 완성<br />반 셀프<br />인테리어 플래너</h1>
+            <h1>30초 완성<br />반셀프<br />인테리어 플래너</h1>
             <NoticeText>* 모바일 최적화 버전은 개발중입니다!</NoticeText>
           </MainTitle>
         </CardTopLeftWrapper>
