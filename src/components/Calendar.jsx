@@ -17,6 +17,21 @@ const FullcalendarWrapper = styled.section`
     .fc-day-sun { color: red; }
     .fc-day-sat { color: #0047FF; }
 `
+const CustomEventTitle = styled.div`
+  font-size: 1.5rem;
+  color: #121212;
+  line-height: 1.5;
+  .fc-event-title {
+    line-height: 1.5;
+  }
+`;
+
+
+const renderEventContent = eventInfo => (
+  <CustomEventTitle color={eventInfo.event.extendedProps.color}>
+    {eventInfo.event.title}
+  </CustomEventTitle>
+);
 
 const Calendar = ({ events }) => (
     <FullcalendarWrapper>
@@ -24,6 +39,7 @@ const Calendar = ({ events }) => (
             plugins={[dayGridPlugin]}
             initialView="dayGridMonth"
             events={events}
+            eventContent={renderEventContent}  // 커스텀 렌더 함수 사용
         />
     </FullcalendarWrapper>
 );
