@@ -131,7 +131,7 @@ const PlanConts = () => {
         });
     }
   }, [location.search]);
-  
+
   // 시작 날짜 변경 핸들러
   const handleStartDateChange = event => {
     setStartDate(event.target.value);
@@ -174,14 +174,18 @@ const PlanConts = () => {
   // 고정된 색상 배열
   const colors = ['#AED9E0', '#AFBDD9', '#B2D8F1', '#B2EBF2', '#B5D3E5', '#B6E2D5', '#BAD7D9', '#BADCE6', '#BBC7D1', '#BCC6E0', '#BCE5E7', '#BDE4E6', '#BED3E1', '#C0E4F9', '#C3E6CB', '#C5E1A5', '#C5E4E7', '#C6D3DE', '#C7CEEB', '#C9E3E6', '#CCE7E7', '#CFE0E1', '#CFE5FA', '#D5E5E7', '#DAE9F5', '#E0ECF6', '#E3E8F2'];
 
-  // 풀캘린더에 표시할 이벤트 배열 생성
-  const events = modifiedData.map((row, index) => ({
-    title: row['시공 개요'], // 시공 개요를 이벤트 타이틀로 사용
-    start: row['공사 기간'].split(' ~ ')[0], // 시작 날짜를 이벤트 시작 날짜로 사용
-    end: row['공사 기간'].split(' ~ ')[1], // 종료 날짜를 이벤트 종료 날짜로 사용
-    color: colors[index % colors.length], // 고정된 색상 배열에서 순서대로 색상 할당
-    textColor: '#021034',
-  }));
+  const events = modifiedData.map((row, index) => {
+    const start = row['공사 기간'].split(' ~ ')[0];
+    const end = row['공사 기간'].split(' ~ ')[1];
+    const endDate = new Date(end);
+    endDate.setDate(endDate.getDate() + 1); // 종료 날짜를 하루 더함
+    return {
+      title: row['시공 개요'],
+      start,
+      end: endDate.toISOString().slice(0, 10),
+      color: colors[index % colors.length],
+    };
+  });
 
   return (
     <PlanContsWrapper>
@@ -191,7 +195,7 @@ const PlanConts = () => {
             <HighlightTitle>{constructionType}</HighlightTitle>
             <SubTitle>공사 계획표</SubTitle>
           </PlanTitleWrapper>
-          <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <CustomDate startDate={startDate} handleStartDateChange={handleStartDateChange} />
             <NoticeText color='#E24242'>* 공사 계획표의 내용은 드래그하여 복사할 수 있습니다, 엑셀에 붙여 넣어 사용해 보세요.</NoticeText>
           </div>

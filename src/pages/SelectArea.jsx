@@ -16,7 +16,7 @@ import selectarea_img from "../assets/selectarea_img.png"
 // styled components
 const SelectAreaWrapper = styled.section`
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@ const SelectArea = () => {
   const location = useLocation();
   const constructionType = location.state?.constructionType;
   
-  const goToHome = () => { navigate('/'); };
+  const goToHome = () => { navigate('/home'); };
 
   return (
     <SelectAreaWrapper>

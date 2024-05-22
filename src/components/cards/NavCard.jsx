@@ -13,7 +13,7 @@ const StyledCard = styled.div.attrs(props => ({
 }))`
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   padding: 2rem;
   background: #FFFFFF;
   border-radius: 20px;
@@ -25,6 +25,17 @@ const StyledCard = styled.div.attrs(props => ({
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease-in-out; // transform 속성에 대한 애니메이션 효과 추가
+  .hover-text-large { 
+    display: none; 
+    color:#121212;
+    white-space: pre-line; 
+    font-family: Pretendard;
+    font-size: 2.5rem;
+    line-height: 2.6rem;
+    font-weight: normal;
+    text-align: left;
+    overflow-y: auto;
+  }
   .hover-text { 
     display: none; 
     white-space: pre-line; 
@@ -63,17 +74,18 @@ const StyledCard = styled.div.attrs(props => ({
     img {
       display: none; /* 이미지 숨김 */
     }
-    .hover-text, .hover-text-small, .hover-text-xsmall {
+    .hover-text, .hover-text-small, .hover-text-xsmall, .hover-text-large {
       display: block; /* 호버 시 보이도록 함 */
     }
   }
 `;
 
-const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent, hoverText, hoverTextSmall, hoverTextXSmall }) => {
+const NavCard = ({ children, onClick, width, height, backgroundColor, color, justifyContent, hoverText, hoverTextSmall, hoverTextXSmall, hoverTextLarge }) => {
     return (
       <StyledCard onClick={onClick} width={width} height={height} backgroundColor={backgroundColor} color={color} justifyContent={justifyContent}>
         {children}
         <div>
+          <div className="hover-text-large">{hoverTextLarge}</div>
           <div className="hover-text">{hoverText}</div>
           <div className="hover-text-small">{hoverTextSmall}</div>
           <div className="hover-text-xsmall">{hoverTextXSmall}</div>

@@ -3,19 +3,20 @@ import styled from 'styled-components';
 
 
 const MainContent = styled.main`
- width: 140rem;
+ width: 100vw;
+ height: 100vh;
  margin: 0 auto;
  display: flex; 
  justify-content: center; 
  align-items: center; 
  background: #F8F9FB;  
- padding: 2rem; `;
+ `;
 
 const MainLayout = ({ children }) => {
   return (
-    <div>
+    <section>
       <MainContent>{children}</MainContent>
-    </div>
+    </section>
   );
 };
 
