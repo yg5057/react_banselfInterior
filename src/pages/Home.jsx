@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import NavCard from '../components/cards/NavCard';
 import MainTitle from '../components/titles/MainTitle';
 import ImageCard from '../components/images/ImageCard';
-import NoticeText from '../components/titles/\bNoticeText';
+import NoticeText from '../components/titles/NoticeText';
 
 import card_img1 from "../assets/card_img1.png"
 import card_img2 from "../assets/card_img2.png"

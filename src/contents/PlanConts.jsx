@@ -8,7 +8,7 @@ import Calendar from '../components/Calendar';
 import Table from '../components/Table';
 import SubTitle from '../components/titles/SubTitle';
 import HighlightTitle from '../components/titles/HighlightTitle';
-import NoticeText from '../components/titles/\bNoticeText';
+import NoticeText from '../components/titles/NoticeText';
 
 
 // styled components
