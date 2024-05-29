@@ -34,7 +34,7 @@ const Plan = () => {
   const goToHome = () => { navigate('/home'); };
   const openModal = () => { setModalOpen(true); };
   const closeModal = () => { setModalOpen(false); };
-  const openExternalURL = () => {  window.open('https://walla.my/v/zXona2Te5JbfUDOB9cjH', '_blank'); };
+  const openExternalURL = () => {  window.open('https://walla.my/survey/zXona2Te5JbfUDOB9cjH', '_blank'); };
 
   return (
     <PlanWrapper>

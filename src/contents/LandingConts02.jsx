@@ -48,7 +48,10 @@ const LandingConts02 = () => {
                 </LandingIconWrapper>
                 <LandingTitleMidium>철거? 전기? 조명?</LandingTitleMidium>
                 <LandingTitleMidium>어디서부터 공사계획을 세워야할지 너무 막막하시죠?</LandingTitleMidium>
-                <LandingTitleMidium>클릭 2번이면 자동완성되는 <span style={{color:'#0047FF'}}>반셀프</span> 인테리어 플래너가 <span style={{color:'#0047FF'}}>도와드릴게요!</span></LandingTitleMidium>
+                <LandingTitleMidium>
+                    클릭 2번이면 자동완성되는 
+                    <span style={{color:'#0047FF'}}>반셀프 인테리어 플래너가 도와드릴게요!</span>
+                </LandingTitleMidium>
             </LandingTitleWrapper>
             <img src={landing_img01} alt="Landing Img" />
   
